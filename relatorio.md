@@ -12,7 +12,7 @@ Expectativas de resolução
 - ***Leonardo Demore:*** Investigação das variáveis que poderemos tirar dos datasets; feature engineering
 - ***Julio Cesar:*** Extração de Dados Brutos e não estruturados relacionados com o tema de grandes Datasets (>2.5 Tb)
 - ***Victor Botelho:*** Estudo das fontes de dados históricos do mercado financeiro; organização da planilha da matéria e início deste relatório;
-- ***Decisões tomadas:*** decidimos qual rumo o projeto vai tomar: modelo classificador de compra e venda; o projeto vai usar escopo global; definiu
+- ***Decisões tomadas:*** decidimos qual rumo o projeto vai tomar: modelo classificador de compra e venda; o projeto vai usar escopo global; professor sugeriu clusterizar e fazer análise intra-cluster.
 
 
 ## 20/08/26
