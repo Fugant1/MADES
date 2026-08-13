@@ -8,15 +8,16 @@ análise de sentimento e estudos de eventos para encontrar padrões, distorçõe
 
 
 ## 13/08/26
-Expectativas de resolução
-- ***Leonardo Demore:*** Investigação das variáveis que poderemos tirar dos datasets; feature engineering
-- ***Julio Cesar:*** Extração de Dados Brutos e não estruturados relacionados com o tema de grandes Datasets (>2.5 Tb)
-- ***Victor Botelho:*** Estudo das fontes de dados históricos do mercado financeiro; organização da planilha da matéria e início deste relatório;
-- ***Decisões tomadas:*** decidimos qual rumo o projeto vai tomar: modelo classificador de compra e venda; o projeto vai usar escopo global; professor sugeriu clusterizar e fazer análise intra-cluster.
+O que foi feito:
+- ***Leonardo Demore (dados estruturados):*** Investigação de fontes de dados e quais dados serão levantados; quais técnicas de pre-processing e feature engineering; como podemos ter certeza que a coleta dos dados foi boa;
+- ***Julio Cesar (dados não-estruturados):*** Extração de Dados Brutos e não estruturados relacionados com o tema de grandes Datasets (notícias e discursos); 
+- ***Victor Botelho (organização e validação):*** Estudo das fontes de dados históricos do mercado financeiro; organização da planilha da matéria e início deste relatório; organização do projeto, definição das tarefas de cada um, validação das conclusões dos integrantes;
+- ***Decisões tomadas:*** decidimos qual rumo o projeto vai tomar: modelo classificador de compra e venda; o projeto vai usar escopo global e local (podemos filtrar); professor sugeriu clusterizar e fazer análise intra-cluster.
 
 
 ## 20/08/26
-Expectativas de resolução
+Expectativas do dia: Adicionar mais países a coleta de dados (G8, BRICS, CANADA, RUSSIA, JAPÃO, talvez mais países); pré-processamento dos dados, clusterização e análise estatística; obtenção dos dados não-estruturados e início do processamento dos mesmos.
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -24,7 +25,8 @@ Expectativas de resolução
 
 
 ## 27/08/26
-Expectativas de resolução
+Expectativas do dia: feature engineering e possível integração dos dados estruturados com não-estruturados.
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -32,7 +34,8 @@ Expectativas de resolução
 
 
 ## 03/09/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -40,7 +43,8 @@ Expectativas de resolução
 
 
 ## 10/09/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -48,7 +52,8 @@ Expectativas de resolução
 
 
 ## 17/09/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -56,7 +61,8 @@ Expectativas de resolução
 
 
 ## 24/09/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -64,7 +70,8 @@ Expectativas de resolução
 
 
 ## 01/10/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -72,7 +79,8 @@ Expectativas de resolução
 
 
 ## 08/10/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -80,7 +88,8 @@ Expectativas de resolução
 
 
 ## 15/10/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -88,7 +97,8 @@ Expectativas de resolução
 
 
 ## 22/10/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -96,7 +106,8 @@ Expectativas de resolução
 
 
 ## 29/10/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -104,7 +115,8 @@ Expectativas de resolução
 
 
 ## 05/11/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -112,7 +124,8 @@ Expectativas de resolução
 
 
 ## 12/11/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -120,7 +133,8 @@ Expectativas de resolução
 
 
 ## 19/11/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -128,7 +142,8 @@ Expectativas de resolução
 
 
 ## 26/11/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -136,7 +151,8 @@ Expectativas de resolução
 
 
 ## 03/12/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
@@ -144,7 +160,8 @@ Expectativas de resolução
 
 
 ## 10/12/26
-Expectativas de resolução
+Expectativas do dia:
+O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
 - ***Victor Botelho:***
