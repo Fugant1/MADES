@@ -18,10 +18,10 @@ O que foi feito:
 ## 20/08/26
 Expectativas do dia: Adicionar mais países a coleta de dados (G8, BRICS, CANADA, RUSSIA, JAPÃO, talvez mais países); pré-processamento dos dados, clusterização e análise estatística; obtenção dos dados não-estruturados e início do processamento dos mesmos.
 O que foi feito:
-- ***Leonardo Demore:***
-- ***Julio Cesar:***Obtenção dos dados não-estruturados
-- ***Victor Botelho:***Procura de APIs para os dados de cripto
-- ***Decisões tomadas:***
+- ***Leonardo Demore:***Adição de novos países para a coleta de dados, definição dos dados de mercado a serem utilizados de cada país, início do script de processamento e organização do projeto;
+- ***Julio Cesar:***Obtenção, extração e filtragem dos dados não-estruturados (extração de 48 mil linhas de 2020 a 2026). Análise dos temas relevantes desses dados;
+- ***Victor Botelho:***Avaliação das APIs para os dados de cripto e mercado, quais dados trabalhar do Brasil (relevância), organização do projeto e atualização do relatório;
+- ***Decisões tomadas:***Descartamos coletar os dados da Rússia porque desde as sanções de 2022, a cobertura do FRED e do Yahoo Finance para Rússia ficou incompleta ou descontinuada em vários pontos; Vamos trabalhar o tempo na escala diária (mínimo possível); 
 
 
 ## 27/08/26
