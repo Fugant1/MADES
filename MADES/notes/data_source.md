@@ -11,22 +11,49 @@
 ## 2. Variáveis Brutas (Dataset Base)
 Coleta direta via APIs `yfinance` e `fredapi`. 
 
-| Fonte Econômica / Bloco | Categoria | Variável / Ticker | Fonte | Frequência |
+## 2. Variáveis Brutas (Dataset Núcleo)
+Coleta direta via APIs `yfinance` e `fredapi`. 
+
+## 2. Variáveis Brutas (Dataset Núcleo)
+Coleta direta via APIs `yfinance` e `fredapi`. 
+
+| País / Bloco | Categoria | Variável / Ticker | Fonte | Frequência |
 | :--- | :--- | :--- | :--- | :--- |
 | **EUA** | Juros | Fed Funds Rate (`FEDFUNDS`) | FRED | Mensal/Diária |
 | **EUA** | Inflação | US CPI (`CPIAUCSL`) | FRED | Mensal |
 | **EUA** | Mercado | DXY (`DX-Y.NYB`) | yfinance | Diária |
 | **EUA** | Mercado | Nasdaq-100 (`^NDX`) | yfinance | Diária |
 | **EUA** | Mercado | US10Y (`^TNX`) | yfinance | Diária |
-| **Europa** | Juros | ECB Main Ref Rate (`ECBMAINREF`) | FRED | Mensal/Diária |
-| **Europa** | Inflação | Eurozone CPI (`CP0000EZ19M086NES`)| FRED | Mensal |
-| **Europa** | Câmbio | EUR/USD (`EURUSD=X`) | yfinance | Diária |
+| **Alemanha** | Juros | ECB Main Ref Rate (`ECBMAINREF`) | FRED | Mensal/Diária |
+| **Alemanha** | Inflação | Germany CPI (`DEUCPIALLMINMEI`) | FRED | Mensal |
+| **Alemanha** | Mercado | DAX (`^GDAXI`) | yfinance | Diária |
+| **França** | Juros | ECB Main Ref Rate (`ECBMAINREF`) | FRED | Mensal/Diária |
+| **França** | Inflação | France CPI (`FRACPIALLMINMEI`) | FRED | Mensal |
+| **França** | Mercado | CAC 40 (`^FCHI`) | yfinance | Diária |
+| **Itália** | Juros | ECB Main Ref Rate (`ECBMAINREF`) | FRED | Mensal/Diária |
+| **Itália** | Inflação | Italy CPI (`ITACPIALLMINMEI`) | FRED | Mensal |
+| **Itália** | Mercado | FTSE MIB (`FTSEMIB.MI`) | yfinance | Diária |
+| **Reino Unido**| Juros | BOE Official Rate (`BOERATE` ou proxy FRED) | FRED | Mensal/Diária |
+| **Reino Unido**| Inflação | UK CPI (`GBRCPIALLMINMEI`) | FRED | Mensal |
+| **Reino Unido**| Mercado/Câmbio | FTSE 100 (`^FTSE`) e GBP/USD (`GBP=X`) | yfinance | Diária |
+| **Canadá** | Juros | BOC Target Rate (`INTDSRCAM193N`) | FRED | Mensal/Diária |
+| **Canadá** | Inflação | Canada CPI (`CANCPIALLMINMEI`) | FRED | Mensal |
+| **Canadá** | Mercado/Câmbio | S&P/TSX (`^GSPTSE`) e USD/CAD (`CAD=X`) | yfinance | Diária |
+| **Japão** | Juros | BOJ Policy Rate (`INTDSRJPM193N`) | FRED | Mensal/Diária |
+| **Japão** | Inflação | Japan CPI (`JAPCPIALLMINMEI`) | FRED | Mensal |
+| **Japão** | Mercado/Câmbio | NIKKEI 225 (`^N225`) e USD/JPY (`JPY=X`) | yfinance | Diária |
 | **China** | Juros | PBOC Rate (`INTDSRCNM193N`) | FRED | Mensal/Diária |
 | **China** | Inflação | China CPI (`CHNCPIALLMINMEI`) | FRED | Mensal |
 | **China** | Câmbio | USD/CNY (`CNY=X`) | yfinance | Diária |
 | **Índia** | Juros | RBI Repo Rate (`INDIR3TIB01STM`) | FRED | Mensal/Diária |
 | **Índia** | Inflação | India CPI (`INDCPIALLMINMEI`) | FRED | Mensal |
 | **Índia** | Mercado | NIFTY 50 (`^NSEI`) | yfinance | Diária |
+| **Brasil** | Juros | Selic Rate Proxy (`INTDSRBRM193N`) | FRED | Mensal/Diária |
+| **Brasil** | Inflação | Brazil CPI / IPCA (`BRACPIALLMINMEI`) | FRED | Mensal |
+| **Brasil** | Mercado/Câmbio | IBOVESPA (`^BVSP`) e USD/BRL (`BRL=X`) | yfinance | Diária |
+| **África do Sul**| Juros | SARB Repo Rate (`INTDSRZAM193N`) | FRED | Mensal/Diária |
+| **África do Sul**| Inflação | South Africa CPI (`ZAFCPIALLMINMEI`) | FRED | Mensal |
+| **África do Sul**| Mercado/Câmbio | JSE All Share (`^J203.JO`) e USD/ZAR (`ZAR=X`) | yfinance | Diária |
 | **Alvo** | Cripto | Bitcoin (`BTC-USD`) (OHLCV) | yfinance | Diária |
 
 ---
