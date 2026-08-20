@@ -19,8 +19,8 @@ O que foi feito:
 Expectativas do dia: Adicionar mais países a coleta de dados (G8, BRICS, CANADA, RUSSIA, JAPÃO, talvez mais países); pré-processamento dos dados, clusterização e análise estatística; obtenção dos dados não-estruturados e início do processamento dos mesmos.
 O que foi feito:
 - ***Leonardo Demore:***
-- ***Julio Cesar:***
-- ***Victor Botelho:***
+- ***Julio Cesar:***Obtenção dos dados não-estruturados
+- ***Victor Botelho:***Procura de APIs para os dados de cripto
 - ***Decisões tomadas:***
 
 
