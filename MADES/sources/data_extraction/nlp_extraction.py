@@ -23,7 +23,7 @@ FROM
 WHERE 
   (LOWER(V2Persons) LIKE '%bitcoin%' OR LOWER(V2Themes) LIKE '%bitcoin%')
   AND SourceCommonName IN ('bloomberg.com', 'reuters.com', 'coindesk.com', 'cointelegraph.com', 'theblock.co')
-  AND _PARTITIONTIME BETWEEN TIMESTAMP('2020-01-01') AND TIMESTAMP('2026-01-31')
+  AND _PARTITIONTIME BETWEEN TIMESTAMP('2015-01-01') AND TIMESTAMP('2019-12-31')
 QUALIFY ROW_NUMBER() OVER(PARTITION BY DocumentIdentifier ORDER BY DATE DESC) = 1
 """
 
@@ -56,5 +56,5 @@ if EXECUTAR_DE_VERDADE:
     print(f"Sucesso! {len(df)} notícias únicas e confiáveis baixadas.")
     print(df.head())
     
-    df.to_csv("dados_bitcoin_gdelt_limpos.csv", index=False)
+    df.to_csv("dados_bitcoin_gdelt_limpos_2.csv", index=False)
     print("Dados salvos!")
