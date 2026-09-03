@@ -39,13 +39,17 @@ Nenhuma decisão específica tomada, apenas continuação do projeto
 Expectativas do dia: debug completo do código e possível integração dos dados / Análise exploratória dos dados 
 O que foi feito:
 - ***Leonardo Demore:***
+Debug completo do código de coleta de dados; início do código de análise exploratória 
 - ***Julio Cesar:***
+continuação no código de dados não estruturados; clusterização dos dados 
 - ***Victor Botelho:***
+Feita a apresentação do nosso projeto; ajuda com o debug do código
 - ***Decisões tomadas:***
+Nenhuma decisão específica tomada, apenas continuação do projeto
 
 
 ## 10/09/26
-Expectativas do dia:
+Expectativas do dia: Análise exploratória e merge dos dados
 O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***

@@ -1,4 +1,5 @@
-from data_collector import DataCollector
+from data_collection.data_collector import DataCollector
+from data_processing.struc_data_processing import DataProcessing
 
 def collect_data():
     """
@@ -20,13 +21,22 @@ def collect_data():
     canada_rate = collector.get_canada_rate()
     canada_cpi = collector.get_canada_cpi()
 
-
 def main():
-    # Faz a coleta dos dados diretamente das APIs
-    # Rodar apenas 1 vez
-    #collect_data()
+    # Faz a coleta dos dados das APIs (rodar apenas 1 vez)
+    # collect_data()
 
-    print("olá")
+    # Instancia o objeto que processa os dados
+    processer = DataProcessing()
+
+    # Unifica os dados 
+    #processer.unify_data()
+
+    # Limpa os dados (análise inicial feita no notebook)
+    #processer.clean_data()
+
+    # Por fim, envia o dataframe clean para salvar no HuggingFace
+    #processer.push_to_huggingface()
+
 
 
 if __name__ == "__main__":

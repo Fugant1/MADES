@@ -8,7 +8,7 @@ import requests
 import warnings
 import os
 from dotenv import load_dotenv
-from config import get_tickers
+from data_collection.config import get_tickers
 
 class DataCollector:
 
