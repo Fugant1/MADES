@@ -31,7 +31,7 @@ FRED_TICKERS = {
 
     # India
     "INDIA_CALL_MONEY_RATE": "IRSTCI01INM156N",
-    "INDIA_CPI": "CPI: Total for India",
+    "INDIA_CPI": "INDCPIALLMINMEI",
 
     # Brazil
     "BRAZIL_CPI": "BRACPIALLMINMEI",
