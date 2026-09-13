@@ -29,7 +29,7 @@ Expectativas do dia: definição dos tickers restantes, coleta de dados estrutur
 O que foi feito:
 - ***Leonardo Demore:***
 Foco em fazer o código de coleta das variáveis (versão inicial finalizada), aplicação de padrões de projeto (uso de arquivos de configuração, definição de classes e métodos), começo do debug do código.
-- ***Julio Cesar:***
+- ***Julio Cesar:***Eventos divididos em variáveis de categoria de organização e tag de assunto, totalizando, com a variável de sentimento, 15 variáveis. Haviam +80 variáveis com esparcidade absurda, esse foi o motivo da divisão em macro categorias. Além disso, foi realizada uma exploração básica, plotando tempo com sentimento e posteriormente, com volume de notícias publicadas.   
 - ***Victor Botelho:***
 Finalização da pesquisa: definição das variáveis da tabela (quais fontes vamos usar, verificação dos tickers e APIs diversas), ajuda com o código inicial, confecção do relatório e organização do projeto.
 - ***Decisões tomadas:***
