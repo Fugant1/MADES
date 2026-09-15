@@ -1,7 +1,7 @@
 import pandas as pd
 from google.cloud import bigquery
 
-caminho_chave = "civil-song-468401-d4-27368e8236d4.json" 
+caminho_chave = "MADES/sources/civil-song-468401-d4-27368e8236d4.json" 
 client = bigquery.Client.from_service_account_json(caminho_chave)
 
 # ==========================================
@@ -23,7 +23,7 @@ FROM
 WHERE 
   (LOWER(V2Persons) LIKE '%bitcoin%' OR LOWER(V2Themes) LIKE '%bitcoin%')
   AND SourceCommonName IN ('bloomberg.com', 'reuters.com', 'coindesk.com', 'cointelegraph.com', 'theblock.co')
-  AND _PARTITIONTIME BETWEEN TIMESTAMP('2015-01-01') AND TIMESTAMP('2019-12-31')
+  AND _PARTITIONTIME BETWEEN TIMESTAMP('2017-01-01') AND TIMESTAMP('2019-12-31')
 QUALIFY ROW_NUMBER() OVER(PARTITION BY DocumentIdentifier ORDER BY DATE DESC) = 1
 """
 
