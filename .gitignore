@@ -3,3 +3,4 @@ venv/
 data/
 .env
 __pycache__/
+mermaid_guide.md
