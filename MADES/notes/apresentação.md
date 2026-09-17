@@ -110,6 +110,7 @@ O projeto organiza dados estruturados de vários mercados e países.
 - Bank of England
 - Bank of Canada
 - Statistics Canada
+- GDELT
 
 ### Variáveis consideradas
 
@@ -117,6 +118,7 @@ O projeto organiza dados estruturados de vários mercados e países.
 - inflação: CPI e IPCA;
 - mercado: Nasdaq, DAX, CAC 40, FTSE, IBOVESPA;
 - câmbio: USD/BRL, USD/JPY, USD/CAD, USD/ZAR;
+- notícias: sentimento, temas, organização
 - alvo: Bitcoin em OHLCV diário.
 
 ---
@@ -128,18 +130,27 @@ A coleta está estruturada em módulos com papéis bem definidos.
 - `config.py`: dicionários de tickers;
 - `data_collector.py`: coleta e exportação das séries;
 - `main.py`: execução principal;
-- `nlp_extraction.py`: extração de notícias e eventos;
+- `nlp_collector.py`: extração de notícias e eventos;
 - `nlp_processing.py`: análise inicial de temas e organizações.
 
 Atualmente, estamos na etapa de debug do código de coleta. Quando essa etapa fechar, começaremos com análise exploratória e levantamento de hipóteses.
 
 ### Fluxo
 
+## Dados estruturados
 1. definir tickers e fontes;
 2. coletar séries por API;
 3. ajustar datas e frequências;
 4. exportar dados em CSV;
 5. preparar cruzamento entre bases.
+
+## Dados não estruturados
+1. extração das notícias únicas via google bigquery
+2. coletar top de temas e organizações
+3. ajustar clusteres de Tema X Organização via clusterização acumulativa
+4. normalizar os dados por dia e não por notícia
+5. exportar dados em CSV
+6. preparar cruzamento entre bases
 
 ---
 
@@ -199,6 +210,7 @@ E nosso modelo será um classificador multi-alvo, considerando estes três estad
 ---
 
 - processamento inicial de dados textuais;
+- extração dos dados não estruturados agrupados por cluster;
 - definição da lógica de target.
 
 ### O que falta
