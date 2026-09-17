@@ -48,26 +48,20 @@ Feita a apresentação do nosso projeto; ajuda com o debug do código
 Nenhuma decisão específica tomada, apenas continuação do projeto
 
 
-## 10/09/26
-Expectativas do dia: Análise exploratória e merge dos dados
-O que foi feito:
-- ***Leonardo Demore:***
-- ***Julio Cesar:***
-- ***Victor Botelho:***
-- ***Decisões tomadas:***
+## 10/09/26 - SEMANA COM FERIADO
 
 
 ## 17/09/26
-Expectativas do dia:
+Expectativas do dia: Apresentação da Entrega 1 para o professor, análise e coleta de feedbacks e melhorias para o projeto.
 O que foi feito:
-- ***Leonardo Demore:***
-- ***Julio Cesar:***
-- ***Victor Botelho:***
-- ***Decisões tomadas:***
+- ***Leonardo Demore: Apresentação da Entrega 1, explicação dos tickers e formulação do pipeline.***
+- ***Julio Cesar: Apresentação da Entrega 1, discussão sobre clusterização e coleta de feedbacks.***
+- ***Victor Botelho: Apresentação da Entrega 1, organização interna do projeto e criação dos slides.***
+- ***Decisões tomadas: Implementação de um pipeline visual para o projeto e inclusão na apresentação. Adicionar diversos gráficos para a EDA da Entrega 2, com análises das variáveis que contribua para a futura modelagem.***
 
 
 ## 24/09/26
-Expectativas do dia:
+Expectativas do dia: Análise exploratória e merge dos dados
 O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
