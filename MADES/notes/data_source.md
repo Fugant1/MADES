@@ -51,9 +51,16 @@ Coleta direta via APIs `yfinance`, `fredapi`, `bank of England`, `bank of Canada
 ---
 
 ## 2. Data Cleaning
+*   **Calendário:** o do BTC (diário, 7 dias por semana). Mercados fechados e séries mensais são preenchidos com forward fill.
+*   **Defasagem de publicação (anti-vazamento):** cada série macro é deslocada pelo tempo até a sua divulgação (`PUBLICATION_LAGS` em `config.py`): CPI dos EUA 45 dias, demais CPIs 55, médias mensais de juros 32–35, séries diárias do FRED 1. Sem isso, o CPI de janeiro aparecia em 01/01.
+*   **Nulos:** removidas as linhas iniciais nulas (feriado de 2016 e a janela aberta pela defasagem).
+*   **Notícias (GDELT):** duplicatas removidas por URL; tom ajustado pela média histórica (só passada) de cada fonte; agregação por dia UTC.
+*   Detalhes e justificativas: `pipeline2.md`.
 
 
 ## 3. Feature Engineering 
+> Implementação final em `sources/modeling/features.py` (os indicadores foram implementados à mão, sem a biblioteca `ta`). Além dos itens abaixo: volatilidade realizada de 1/7/30 dias e de Parkinson, retornos de 5 dias, variações de juros em 90 dias, inflação em 12 meses e as features de notícias (tom ponderado de 1/3/7/30 dias, z-score do tom, volume de notícias, participação e tom de cada um dos 11 clusters).
+
 Para capturar a inércia do mercado, as variáveis brutas acima passarão pelas seguintes transformações matemáticas:
 
 ### A. Atrasos Temporais (Lags)
@@ -84,5 +91,7 @@ As classes serão definidas com base em um threshold ($\tau$) matemático:
 *   **Classe 0 (Manter):** Se $-\tau \le R_{t+1} \le \tau$
 
 Esse threshold será definido primeiramente como a soma das taxas da corretora (fees) + custo de execução da ordem (slippage). Depois disso, vamos testar esse threshold baseline com variações, treinando modelos em cada um deles para selecionar aquele que entregar o melhor desempenho financeiro.
+
+**Definido (22/10):** $\tau = 0{,}30\%$ = 2 × (0,10% de taxa + 0,05% de slippage), uma operação de ida e volta. Variações testadas: 0,1%, 0,5% e 1%. Alvos adicionais: direção binária ($R_{t+1} > 0$) e log da volatilidade realizada dos próximos 7 dias.
 
 > **⚠️ Alerta de Prevenção de Data Leakage:** Todas as colunas com dados do futuro ($T+1$) serão removidas do dataset de treinamento antes da modelagem.

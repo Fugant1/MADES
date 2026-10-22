@@ -1,13 +1,15 @@
-from data_collection.data_collector import DataCollector
 from data_processing.struc_data_processing import DataProcessing
+from data_processing.nlp_processing import NewsProcessing
+from data_processing.integration import DataIntegration
 
 def collect_data():
     """
-    Coleta os dados separadamente. Após executar uma vez, os 
+    Coleta os dados separadamente. Após executar uma vez, os
     dados ficarão salvos na pasta 'data', separados pela fonte.
     Após unificar e limpar todos os CSV, vamos disponibilizar
-    no HuggingFace para download. 
+    no HuggingFace para download.
     """
+    from data_collection.data_collector import DataCollector
 
     collector = DataCollector()
 
@@ -22,13 +24,16 @@ def collect_data():
     canada_cpi = collector.get_canada_cpi()
 
 def main():
-    # Faz a coleta dos dados das APIs (rodar apenas 1 vez)
+    # ------------------------------------------------------------------
+    # Trilha estruturada
+    # ------------------------------------------------------------------
+    # Faz a coleta dos dados das APIs (rodar apenas 1 vez, exige API keys)
     # collect_data()
 
     # Instancia o objeto que processa os dados
     processer = DataProcessing()
 
-    # Unifica os dados 
+    # Unifica os dados (já aplica a defasagem de publicação das séries macro)
     #processer.unify_data()
 
     # Limpa os dados (análise inicial feita no notebook)
@@ -36,6 +41,22 @@ def main():
 
     # Por fim, envia o dataframe clean para salvar no HuggingFace
     #processer.push_to_huggingface()
+
+    # Sem API keys: baixa a versão do HuggingFace e aplica a defasagem
+    processer.load_from_huggingface(apply_lag=True)
+
+    # ------------------------------------------------------------------
+    # Trilha não estruturada (exige os CSVs do GDELT em sources/data/)
+    # ------------------------------------------------------------------
+    NewsProcessing().run()
+
+    # ------------------------------------------------------------------
+    # Integração das duas trilhas -> data/integrated_dataframe.csv
+    # ------------------------------------------------------------------
+    DataIntegration().run()
+
+    # A análise e a modelagem estão nos notebooks:
+    #   notebooks/news_processing.ipynb, integrated_eda.ipynb, modeling_baseline.ipynb
 
 
 
