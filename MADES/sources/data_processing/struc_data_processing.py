@@ -16,7 +16,9 @@ class DataProcessing:
         self.data_dir = script_dir.parent / "data"
 
         # Define as constantes do HuggingFace
-        self.repo_id = "leodemore/btc-finance-historical-data"
+        self.struc_repo_id = "leodemore/btc-finance-historical-data"
+        self.nstruc_repo1 = "Fugant1/gdelt_mades1"
+        self.nstruc_repo2 =  "Fugant1/gdelt_mades2"
         self.hf_token = os.getenv("HF_TOKEN")
 
     def unify_data(self):
@@ -130,7 +132,7 @@ class DataProcessing:
         from datasets import Dataset
         from huggingface_hub import login
 
-        print(f"\nIniciando upload para o Hugging Face (Repositório: {self.repo_id})...")
+        print(f"\nIniciando upload para o Hugging Face (Repositório: {self.struc_repo_id})...")
 
         try:
             # Faz o login na API
@@ -147,22 +149,25 @@ class DataProcessing:
             hf_dataset = Dataset.from_pandas(df_upload, preserve_index=False)
 
             # Envia para o Hub
-            hf_dataset.push_to_hub(self.repo_id)
+            hf_dataset.push_to_hub(self.struc_repo_id)
 
             print("Upload concluído com sucesso!")
-            print(f"O dataset já está disponível em: https://huggingface.co/datasets/{self.repo_id}")
+            print(f"O dataset já está disponível em: https://huggingface.co/datasets/{self.struc_repo_id}")
 
         except Exception as e:
             print(f"Erro ao enviar para o Hugging Face: {e}")
 
-    def load_from_huggingface(self, apply_lag=True, save=True):
+    @staticmethod
+    def _hf_parquet_url(repo_id):
+        return f"https://huggingface.co/datasets/{repo_id}/resolve/main/data/train-00000-of-00001.parquet"
+
+    def load_from_hf_struc(self, apply_lag=True, save=True):
         """
-        Baixa a versão publicada no HuggingFace (para quem não tem as API keys).
+        Baixa a base estruturada publicada no HuggingFace (para quem não tem as API keys).
         A versão publicada até 17/09 foi gerada SEM a defasagem de publicação,
         então por padrão aplicamos a defasagem aqui.
         """
-        url = f"https://huggingface.co/datasets/{self.repo_id}/resolve/main/data/train-00000-of-00001.parquet"
-        df = pd.read_parquet(url)
+        df = pd.read_parquet(self._hf_parquet_url(self.struc_repo_id))
         df = df.drop(columns=["index", "Unnamed: 0"], errors="ignore")
         df["Date"] = pd.to_datetime(df["Date"])
         df = df.set_index("Date").sort_index()
@@ -177,3 +182,28 @@ class DataProcessing:
             df.to_csv(output)
             print(f"Base estruturada (point-in-time) salva em '{output}' | {df.shape}")
         return df
+
+    def load_from_hf_nstruc(self, save=True):
+        """
+        Baixa as notícias do GDELT publicadas no HuggingFace (para quem não tem
+        acesso ao BigQuery). Cada repositório corresponde a uma das duas coletas
+        e é salvo com o nome que o NewsProcessing procura em sources/data/:
+            - gdelt_mades1 -> dados_bitcoin_gdelt_limpos.csv   (2020-01 a 2026-01)
+            - gdelt_mades2 -> dados_bitcoin_gdelt_limpos_2.csv (2017-01 a 2019-12)
+        Retorna as duas coletas juntas, em ordem cronológica.
+        """
+        files = {
+            self.nstruc_repo1: "dados_bitcoin_gdelt_limpos.csv",
+            self.nstruc_repo2: "dados_bitcoin_gdelt_limpos_2.csv",
+        }
+        frames = []
+        for repo_id, name in files.items():
+            df = pd.read_parquet(self._hf_parquet_url(repo_id))
+            if save:
+                df.to_csv(self.data_dir / name, index=False)
+                print(f"Notícias de '{repo_id}' salvas em '{self.data_dir / name}' | {df.shape}")
+            frames.append(df)
+
+        news = pd.concat(frames, ignore_index=True)
+        news = news.sort_values("EventTimestamp").reset_index(drop=True)
+        return news
