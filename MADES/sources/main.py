@@ -43,10 +43,13 @@ def main():
     #processer.push_to_huggingface()
 
     # Sem API keys: baixa a versão do HuggingFace e aplica a defasagem
-    processer.load_from_huggingface(apply_lag=True)
+    processer.load_from_hf_struc(apply_lag=True)
+
+    # Baixa as notícias do GDELT (as duas coletas) para sources/data/
+    processer.load_from_hf_nstruc()
 
     # ------------------------------------------------------------------
-    # Trilha não estruturada (exige os CSVs do GDELT em sources/data/)
+    # Trilha não estruturada (usa os CSVs do GDELT baixados acima)
     # ------------------------------------------------------------------
     NewsProcessing().run()
 
