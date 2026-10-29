@@ -106,12 +106,12 @@ Validação walk-forward por ano (teste de 2020 a 2025) com embargo de 7 dias; �
 
 
 ## 29/10/26
-Expectativas do dia:
-O que foi feito:
-- ***Leonardo Demore:***
-- ***Julio Cesar:***
-- ***Victor Botelho:***
-- ***Decisões tomadas:***
+Expectativas do dia: ---
+O que foi feito: --- 
+- ***Leonardo Demore: APRESENTAÇÃO***
+- ***Julio Cesar: APRESENTAÇÃO***
+- ***Victor Botelho: APRESENTAÇÃO***
+- ***Decisões tomadas: ---***
 
 
 ## 05/11/26
