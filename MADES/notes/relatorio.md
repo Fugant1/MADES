@@ -115,16 +115,16 @@ O que foi feito: ---
 
 
 ## 05/11/26
-Expectativas do dia:
-O que foi feito:
-- ***Leonardo Demore:***
-- ***Julio Cesar:***
-- ***Victor Botelho:***
-- ***Decisões tomadas:***
+Expectativas do dia: ---
+O que foi feito: discussão de toda a equipe sobre estratégia de modelagem; investigando hipótese de transformar a granularidade do tempo de DIA -> HORA, para verificar se as notícias ganham poder preditivo ou se apenas reagem ao mercado (constatação atual)
+- ***Leonardo Demore: enfoque na modelagem, possíveis abordagens e aplicação de técnicas que melhoram o poder preditivo (feature selection, feature engineering, etc)***
+- ***Julio Cesar: enfoque na transformação da granularidade do tempo e verificação da hipótese levantada na apresentação***
+- ***Victor Botelho: correção dos erros apontados na apresentaçã anterior; ajuda nas estratégias de modelagem; transcrição do áudio da apresentação***
+- ***Decisões tomadas: nenhum commit por enquanto, pois tudo que foi produzido ainda é preeliminar, e manter local em cada máquina é melhor até obter uma versão estável e pronta para rodar***
 
 
 ## 12/11/26
-Expectativas do dia:
+Expectativas do dia: primeiros commits de modelagem; fim da definição da granularidade do tempo de acordo com os resultados das hipóteses
 O que foi feito:
 - ***Leonardo Demore:***
 - ***Julio Cesar:***
