@@ -126,10 +126,10 @@ O que foi feito: discussão de toda a equipe sobre estratégia de modelagem; inv
 ## 12/11/26
 Expectativas do dia: primeiros commits de modelagem; fim da definição da granularidade do tempo de acordo com os resultados das hipóteses
 O que foi feito:
-- ***Leonardo Demore:***
-- ***Julio Cesar:***
-- ***Victor Botelho:***
-- ***Decisões tomadas:***
+- ***Leonardo Demore:*** Auditou o código e revisou a implementação dos dados estruturados para comportar a mudança para verificação dos dados por hora.
+- ***Julio Cesar:*** Implementou o processamento dos dados não estruturados por hora.
+- ***Victor Botelho:*** Validou os dados não estruturados por hora.
+- ***Decisões tomadas:*** Testar impacto dos dados não estruturados por hora
 
 
 ## 19/11/26

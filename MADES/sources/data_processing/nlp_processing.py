@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import datasets as dt
 from pathlib import Path
 from scipy.cluster.hierarchy import linkage, fcluster
 from sklearn.preprocessing import normalize
@@ -60,14 +61,16 @@ class NewsProcessing:
 
     def load_news(self):
         frames = []
-        for name in self.NEWS_FILES:
-            path = self.data_dir / name
-            if path.exists():
-                frames.append(pd.read_csv(path))
-            else:
-                print(f"Aviso: {name} não encontrado em {self.data_dir}")
+        # for name in self.NEWS_FILES:
+        #     path = self.data_dir / name
+        #     if path.exists():
+        #         frames.append(pd.read_csv(path))
+        #     else:
+        #         print(f"Aviso: {name} não encontrado em {self.data_dir}")
+        dts = dt.load_dataset("Fugant1/gdelt_mades")
+        df = dts['train'].to_pandas()  # Convert the Hugging Face Dataset to a Pandas DataFrame
 
-        df = pd.concat(frames, ignore_index=True).drop_duplicates(subset=["URL"]).reset_index(drop=True)
+        #df = pd.concat(frames, ignore_index=True).drop_duplicates(subset=["URL"]).reset_index(drop=True)
         df["EventTimestamp"] = pd.to_datetime(df["EventTimestamp"], utc=True)
         df["Date"] = df["EventTimestamp"].dt.tz_localize(None).dt.normalize()
         df = df.sort_values("EventTimestamp").reset_index(drop=True)
@@ -234,12 +237,52 @@ class NewsProcessing:
 
     # ------------------------------------------------------------------
 
-    def run(self, k=None):
-        self.load_news()
-        self.build_concept_matrix()
-        if k is None:
+    def hourly_features(self):
+        """
+        Agrega por hora UTC (alinhada aos candles horários do BTC).
+        Guardamos somas, contagens, limiares de tom (±2.0), dispersão e notícias por cluster.
+        """
+        df = self.df.copy()
+        df["Hour"] = df["EventTimestamp"].dt.floor("h")
+        df["neg"] = (df["SentimentScore"] < self.TONE_NEG).astype(int)
+        df["pos"] = (df["SentimentScore"] > self.TONE_POS).astype(int)
+
+        g = df.groupby("Hour")
+        hourly = pd.DataFrame({
+            "news_count": g.size(),
+            "news_tone_sum": g["SentimentScore"].sum(),
+            "news_tone_adj_sum": g["ToneAdj"].sum(),
+            "news_pos_count": g["pos"].sum(),
+            "news_neg_count": g["neg"].sum(),
+            "news_tone_std": g["SentimentScore"].std(),
+            "news_tone_mean": g["SentimentScore"].mean(),
+            "news_tone_adj_mean": g["ToneAdj"].mean(),
+        })
+
+        if self.k is not None and self.labels is not None and self.X is not None:
+            for c in range(self.k):
+                flag = self.X[:, self.labels == c].any(axis=1)
+                sub = df[flag].groupby("Hour")
+                hourly[f"clu{c + 1}_count"] = sub.size()
+                hourly[f"clu{c + 1}_tone_adj_sum"] = sub["ToneAdj"].sum()
+
+        # Calendário completo horário UTC (horas sem notícia ficam com contagem 0 e somas 0)
+        full = pd.date_range(hourly.index.min(), hourly.index.max(), freq="h", tz="UTC", name="Hour")
+        hourly = hourly.reindex(full)
+        count_cols = [c for c in hourly.columns if c.endswith(("_count", "_sum"))]
+        hourly[count_cols] = hourly[count_cols].fillna(0)
+        return hourly
+
+    # ------------------------------------------------------------------
+
+    def run_daily(self, k=None):
+        if self.df is None:
+            self.load_news()
+        if self.X is None:
+            self.build_concept_matrix()
+        if k is None and self.k is None:
             self.select_k()
-        self.cluster_concepts(k)
+        self.cluster_concepts(k or self.k)
 
         daily = self.daily_features()
         tabela = self.cluster_table()
@@ -252,6 +295,34 @@ class NewsProcessing:
         print(f"Base diária salva: {daily.shape} | clusters: {self.k}")
         return daily, tabela
 
+    # ------------------------------------------------------------------
+
+    def run_hour(self, k=None):
+        if self.df is None:
+            self.load_news()
+        if self.X is None:
+            self.build_concept_matrix()
+        if k is None and self.k is None:
+            self.select_k()
+        self.cluster_concepts(k or self.k)
+
+        hourly = self.hourly_features()
+        tabela = self.cluster_table()
+
+        hourly.to_csv(self.data_dir / "news_hourly.csv")
+        tabela.to_csv(self.data_dir / "news_clusters.csv", index=False)
+        if self.k_diagnostics is not None:
+            self.k_diagnostics.to_csv(self.data_dir / "news_k_selection.csv")
+
+        print(f"Base horária salva: {hourly.shape} | clusters: {self.k}")
+        return hourly, tabela
+
+    # Aliases para compatibilidade retroativa
+    run = run_daily
+    run_hourly = run_hour
+
 
 if __name__ == "__main__":
-    NewsProcessing().run()
+    proc = NewsProcessing()
+    proc.run_daily()
+    proc.run_hour()
